@@ -12,6 +12,13 @@ class Post{
         });
     }
 
+    // 获取单条记录 by id
+    static getPostById(id,fn){
+        fetch(Post.$domain+'/'+id).then(res => res.json()).then(res=>{
+            fn&&fn(res);
+        });
+    }
+
     // 删除 By Id
     static deletePostById(id,fn){
         fetch(Post.$domain + '/'+id, 

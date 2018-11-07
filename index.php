@@ -55,9 +55,9 @@
                 <td><?php echo (strlen($data->content->substance[0]->paragraph[0]) > 50 ? mb_substr($data->content->substance[0]->paragraph[0],0,50).'...' : $data->content->substance[0]->paragraph[0] ); ?></td>
                 <td>
                     <div class="layui-btn-group">
-                        <button class="layui-btn layui-btn-sm" data-id="<?php echo $data->id; ?>">
+                        <a href="./edit.php?id=<?php echo $data->id; ?>"><button class="layui-btn layui-btn-sm" data-id="<?php echo $data->id; ?>">
                             <i class="layui-icon">&#xe642;</i>
-                        </button>
+                        </button></a>
                         <button class="layui-btn layui-btn-sm layui-btn-danger" data-id="<?php echo $data->id; ?>" onClick="deleteById(<?php echo $data->id; ?>)">
                             <i class="layui-icon">&#xe640;</i>
                         </button>
