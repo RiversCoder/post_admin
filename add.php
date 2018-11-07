@@ -21,7 +21,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" value="第九十九封信件" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -106,7 +106,7 @@
             
             //监听提交
             form.on('submit(formDemo)', function(data){
-                layer.msg(JSON.stringify(data.field));
+                //layer.msg(JSON.stringify(data.field));
 
                 var dataTemplate = JSON.parse(JSON.stringify(data.field));
                 var substance = getSubstance(dataTemplate);
@@ -114,6 +114,12 @@
                 
                 Post.insertPost(format,(res) =>{
                     console.log(res);
+                    if(res.status == 201 && res.statusText.toLowerCase() == 'created'){
+                        layer.msg('添加成功！');
+                        setTimeout(() => {
+                            window.location.href="./index.php"
+                        }, 2000);
+                    }
                 });
 
                 return false;

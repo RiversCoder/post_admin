@@ -183,13 +183,14 @@
                 substance_input['substance-content'+(index+1)] = v.paragraph.join(';');
                 substance_input['substance-title'+(index+1)] = v.title;
                 substance_input['substance-image'+(index+1)] = JSON.stringify(v.img);
-
-                if(index > 1){
+                
+                if(index >= 1){
                     //创建段落表单标签
-                    addHTMLTab(index);
+                    addHTMLTab(index+1);
                 }
             });
             
+
             // 基本属性
             var formData = Object.assign({},basic,substance_input);
             layui.form.val("my-form", formData);
