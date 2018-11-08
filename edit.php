@@ -166,6 +166,7 @@
 
         /* 回显数据 */
         function showBackForm(data){
+
             // 基本属性
             var basic = {
                 imgText: data.content.img,

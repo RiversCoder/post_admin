@@ -46,7 +46,7 @@
         <?php foreach($json_data as $data) :?>
             <tr>
                 <td><?php echo $data->id; ?></td>
-                <td><?php echo mb_substr($data->title,0,3); ?></td>
+                <td><?php echo mb_substr($data->title,0,4); ?></td>
                 <td><?php echo $data->time; ?></td>
                 <td><?php 
                     echo (!empty($data->content->ctype->name) ? $data->content->ctype->name : '--');
@@ -69,7 +69,8 @@
         </tbody>
     </table>
     
-    
+    <!-- 分页 -->
+    <div id="page-btn-wrap"></div>
 
     <script>
 
@@ -92,6 +93,32 @@
            }
             
         }();
+
+
+        layui.use('laypage', function(){
+            var laypage = layui.laypage;
+            
+            //执行一个laypage实例
+            laypage.render({
+                elem: 'page-btn-wrap', //注意，这里的 test1 是 ID，不用加 # 号
+                limit: <?php echo $limit; ?>,
+                count: <?php echo $count; ?>, //数据总数，从服务端得到
+                theme: 'red',
+                curr: <?php echo $cpage; ?>,
+                jump: function(obj, first){
+                    //obj包含了当前分页的所有参数，比如：
+                    //console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                    //console.log(obj.limit); //得到每页显示的条数
+                    //window.location.href = './index.php?page='+obj.curr;
+                    //console.log('1q23');
+                    //首次不执行
+                    if(!first){
+                        window.location.href = './index.php?page=' + obj.curr;
+                    }
+                }
+            });
+        });
+
 
     </script>
 </body>

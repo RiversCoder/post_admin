@@ -1,7 +1,23 @@
 
 <?php
+
     $jsonDataFile = dirname(__DIR__).DIRECTORY_SEPARATOR.'db.json';
-    $json_data = json_decode(file_get_contents($jsonDataFile))->posts;
+    $json_datas = json_decode(file_get_contents($jsonDataFile))->posts;
+
+    $limit = 10;
+    $count = count($json_datas);
+
+    $cpage = isset($_GET['page']) ? $_GET['page'] : 1;
+    $cpage = $cpage < 0 ? 1 : $cpage;
+
+    function getDataByLimit($all,$cpage,$limit){
+        return array_slice($all,($cpage-1)*$limit,$limit);
+    }
+
+    //echo $cpage*($limit-1);
+
+    $json_data = getDataByLimit($json_datas,$cpage,$limit);
+
 ?>
 
 <!DOCTYPE html>

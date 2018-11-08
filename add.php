@@ -21,7 +21,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" value="第九十九封信件" autocomplete="off" class="layui-input">
+                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" value="第九十九封信笺" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -129,10 +129,9 @@
         //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
         layui.use('element', function(){
             var element = layui.element;
-            
+
             //…
         });
-
 
         //点击增加段落
         var index = 1 ;
